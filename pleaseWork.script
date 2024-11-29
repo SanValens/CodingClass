@@ -1,0 +1,203 @@
+%General Mission Analysis Tool(GMAT) Script
+%Created: 29 Nov 2024 00:13:43.467
+%This script was python generated using the Debrisk library
+    
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+                                
+Create Spacecraft ISS;
+GMAT ISS.DateFormat = UTCGregorian;
+GMAT ISS.Epoch = '29 Nov 2024 00:13:43.467';
+GMAT ISS.CoordinateSystem = EarthMJ2000Eq;
+GMAT ISS.DisplayStateType = Cartesian;
+GMAT ISS.X = -3803.1116832706521;
+GMAT ISS.Y = 5637.4220774463010;
+GMAT ISS.Z = 0.6511037549654;
+GMAT ISS.VX = -3.9405986891267;
+GMAT ISS.VY = -2.6619155216022;
+GMAT ISS.VZ = 5.9998577327845;
+
+% Additional
+GMAT ISS.AtmosDensityScaleFactor = 1;
+GMAT ISS.ExtendedMassPropertiesModel = 'None';
+GMAT ISS.NAIFId = -10000001;
+GMAT ISS.NAIFIdReferenceFrame = -9000001;
+GMAT ISS.OrbitColor = [105 106 204];
+GMAT ISS.TargetColor = Teal;
+GMAT ISS.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
+GMAT ISS.CdSigma = 1e+70;
+GMAT ISS.CrSigma = 1e+70;
+GMAT ISS.Id = 'SatId';
+      
+%----------------------------------------
+%---------- Physical properties
+%----------------------------------------
+GMAT ISS.DryMass = 473264.0;
+GMAT ISS.DragArea = 1524.99;
+GMAT ISS.Cd = 2.0;
+GMAT ISS.Cr = 0;
+GMAT ISS.SRPArea = 0.0;
+        
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+                                
+Create Spacecraft debris;
+GMAT debris.DateFormat = UTCGregorian;
+GMAT debris.Epoch = '29 Nov 2024 00:13:43.467';
+GMAT debris.CoordinateSystem = EarthMJ2000Eq;
+GMAT debris.DisplayStateType = Cartesian;
+GMAT debris.X = -4500.1116832706521;
+GMAT debris.Y = 6000.4220774463010;
+GMAT debris.Z = 8.6511037549654;
+GMAT debris.VX = -3.9405986891267;
+GMAT debris.VY = -1.6619155216022;
+GMAT debris.VZ = 5.9998577327845;
+
+% Additional
+GMAT debris.AtmosDensityScaleFactor = 1;
+GMAT debris.ExtendedMassPropertiesModel = 'None';
+GMAT debris.NAIFId = -10000001;
+GMAT debris.NAIFIdReferenceFrame = -9000001;
+GMAT debris.OrbitColor = [7 226 53];
+GMAT debris.TargetColor = Teal;
+GMAT debris.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
+GMAT debris.CdSigma = 1e+70;
+GMAT debris.CrSigma = 1e+70;
+GMAT debris.Id = 'SatId';
+      
+%----------------------------------------
+%---------- Physical properties
+%----------------------------------------
+GMAT debris.DryMass = 2.0;
+GMAT debris.DragArea = 1.1;
+GMAT debris.Cd = 2.0;
+GMAT debris.Cr = 0;
+GMAT debris.SRPArea = 0.0;
+        
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+                                
+Create Spacecraft debris2;
+GMAT debris2.DateFormat = UTCGregorian;
+GMAT debris2.Epoch = '29 Nov 2024 00:13:43.467';
+GMAT debris2.CoordinateSystem = EarthMJ2000Eq;
+GMAT debris2.DisplayStateType = Cartesian;
+GMAT debris2.X = -5000.1116832706521;
+GMAT debris2.Y = 6200.0000000000000;
+GMAT debris2.Z = 5.6511037549654;
+GMAT debris2.VX = -4.9405986891267;
+GMAT debris2.VY = -2.6619155216022;
+GMAT debris2.VZ = 5.9998577327845;
+
+% Additional
+GMAT debris2.AtmosDensityScaleFactor = 1;
+GMAT debris2.ExtendedMassPropertiesModel = 'None';
+GMAT debris2.NAIFId = -10000001;
+GMAT debris2.NAIFIdReferenceFrame = -9000001;
+GMAT debris2.OrbitColor = [107 77 68];
+GMAT debris2.TargetColor = Teal;
+GMAT debris2.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
+GMAT debris2.CdSigma = 1e+70;
+GMAT debris2.CrSigma = 1e+70;
+GMAT debris2.Id = 'SatId';
+      
+%----------------------------------------
+%---------- Physical properties
+%----------------------------------------
+GMAT debris2.DryMass = 8.0;
+GMAT debris2.DragArea = 1.1;
+GMAT debris2.Cd = 2.0;
+GMAT debris2.Cr = 0;
+GMAT debris2.SRPArea = 0.0;
+        
+%----------------------------------------
+%---------- ForceModels
+%----------------------------------------
+Create ForceModel ForceModel1;
+GMAT ForceModel1.CentralBody = Earth;
+GMAT ForceModel1.PrimaryBodies = {Earth};
+GMAT ForceModel1.RelativisticCorrection = Off;
+
+GMAT ForceModel1.ErrorControl = RSSStep;
+GMAT ForceModel1.GravityField.Earth.Degree = 4;
+GMAT ForceModel1.GravityField.Earth.Order = 4;
+GMAT ForceModel1.GravityField.Earth.StmLimit = 100;
+GMAT ForceModel1.GravityField.Earth.PotentialFile = 'JGM2.cof';
+GMAT ForceModel1.GravityField.Earth.TideModel = 'None';
+GMAT ForceModel1.Drag = None;
+            
+GMAT ForceModel1.SRP = Off;
+
+%----------------------------------------
+%---------- Propagators
+%----------------------------------------
+Create Propagator Propagator1;
+GMAT Propagator1.FM = ForceModel1;
+GMAT Propagator1.Type = RungeKutta89;
+GMAT Propagator1.InitialStepSize = 60;
+GMAT Propagator1.Accuracy = 9.999999999999999e-12;
+GMAT Propagator1.MinStep = 0.001;
+GMAT Propagator1.MaxStep = 2700;
+GMAT Propagator1.MaxStepAttempts = 50;
+GMAT Propagator1.StopIfAccuracyIsViolated = True;
+        
+%----------------------------------------
+%---------- Subscribers
+%----------------------------------------
+Create ReportFile Rep1;
+GMAT Rep1.SolverIterations = Current;
+GMAT Rep1.UpperLeft = [ 0.02950819672131148 0.05714285714285714 ];
+GMAT Rep1.Size = [ 0.5975409836065574 0.7957142857142857 ];
+GMAT Rep1.RelativeZOrder = 138;
+GMAT Rep1.Maximized = false; 
+GMAT Rep1.Filename = 'C:\Users\Tiago\Documents\Universidad\Semilleros\Debrisk\coding_proyect\report1.txt'
+GMAT Rep1.Add = {ISS.UTCGregorian, ISS.EarthMJ2000Eq.X, ISS.EarthMJ2000Eq.Y, ISS.EarthMJ2000Eq.Z, debris.UTCGregorian, debris.EarthMJ2000Eq.X, debris.EarthMJ2000Eq.Y, debris.EarthMJ2000Eq.Z, debris2.UTCGregorian, debris2.EarthMJ2000Eq.X, debris2.EarthMJ2000Eq.Y, debris2.EarthMJ2000Eq.Z}
+GMAT Rep1.WriteHeaders = true;
+GMAT Rep1.LeftJustify = On;
+GMAT Rep1.ZeroFill = Off;
+GMAT Rep1.FixedWidth = true;
+GMAT Rep1.Delimiter = ' ';
+GMAT Rep1.ColumnWidth = 23;
+GMAT Rep1.WriteReport = true;
+
+Create OrbitView DefaultOrbitView;
+GMAT DefaultOrbitView.SolverIterations = Current;
+GMAT DefaultOrbitView.UpperLeft = [ 0.002225189141076991 0 ];
+GMAT DefaultOrbitView.Size = [ 0.5002225189141077 0.4497950819672131 ];
+GMAT DefaultOrbitView.RelativeZOrder = 63;
+GMAT DefaultOrbitView.Maximized = false;
+GMAT DefaultOrbitView.Add = {ISS, debris, debris2, Earth};
+GMAT DefaultOrbitView.CoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.DrawObject = [ true true ];
+GMAT DefaultOrbitView.DataCollectFrequency = 1;
+GMAT DefaultOrbitView.UpdatePlotFrequency = 50;
+GMAT DefaultOrbitView.NumPointsToRedraw = 0;
+GMAT DefaultOrbitView.ShowPlot = true;
+GMAT DefaultOrbitView.MaxPlotPoints = 20000;
+GMAT DefaultOrbitView.ShowLabels = true;
+GMAT DefaultOrbitView.ViewPointReference = Earth;
+GMAT DefaultOrbitView.ViewPointVector = [ 30000 0 0 ];
+GMAT DefaultOrbitView.ViewDirection = Earth;
+GMAT DefaultOrbitView.ViewScaleFactor = 1;
+GMAT DefaultOrbitView.ViewUpCoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.ViewUpAxis = Z;
+GMAT DefaultOrbitView.EclipticPlane = Off;
+GMAT DefaultOrbitView.XYPlane = On;
+GMAT DefaultOrbitView.WireFrame = Off;
+GMAT DefaultOrbitView.Axes = On;
+GMAT DefaultOrbitView.Grid = Off;
+GMAT DefaultOrbitView.SunLine = Off;
+GMAT DefaultOrbitView.UseInitialView = On;
+GMAT DefaultOrbitView.StarCount = 7000;
+GMAT DefaultOrbitView.EnableStars = On;
+GMAT DefaultOrbitView.EnableConstellations = On;        
+        
+%----------------------------------------
+%---------- Mission Sequence
+%----------------------------------------
+BeginMissionSequence;
+Propagate Propagator1(ISS, debris, debris2) {ISS.ElapsedSecs = 12000};
+            
