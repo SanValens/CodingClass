@@ -1,3 +1,4 @@
+#TEST MARIANA 
 # Very important packages
 from load_gmat import * # For the API to work from any directory, load_gmat.py has to be copied inside
 from time import time
@@ -41,6 +42,7 @@ def elapsed_time():
     #print(f"Execution time: {end - STATUS} s")
     STATUS = time()
     return end
+#def coordinates(state_vector):
 
 # Satellite class definition
 """
@@ -274,6 +276,8 @@ def gen_script(spacecrafts, forceModels,propagators, reportFiles, missseqs, file
     script_reportFiles = []
     script_missionsequences = []
 
+
+
     script_header = f"""%General Mission Analysis Tool(GMAT) Script
 %Created: {FORMATTED_TIME}
 %This script was python generated using the Debrisk library
@@ -284,7 +288,8 @@ def gen_script(spacecrafts, forceModels,propagators, reportFiles, missseqs, file
     for spft in spacecrafts:
         #Creates a random RGB color
         random_rgb = [random.randint(0, 255) for _ in range(3)]
-        script_spacecrafts.append(f"""
+        if spft.state_vector[0] == "c":
+            script_spacecrafts.append(f"""
 %----------------------------------------
 %---------- Spacecraft
 %----------------------------------------
@@ -293,13 +298,14 @@ Create Spacecraft {spft.satName};
 GMAT {spft.satName}.DateFormat = UTCGregorian;
 GMAT {spft.satName}.Epoch = '{spft.epoch}';
 GMAT {spft.satName}.CoordinateSystem = EarthMJ2000Eq;
+
 GMAT {spft.satName}.DisplayStateType = Cartesian;
-GMAT {spft.satName}.X = {spft.state_vector[0]:.13f};
-GMAT {spft.satName}.Y = {spft.state_vector[1]:.13f};
-GMAT {spft.satName}.Z = {spft.state_vector[2]:.13f};
-GMAT {spft.satName}.VX = {spft.state_vector[3]:.13f};
-GMAT {spft.satName}.VY = {spft.state_vector[4]:.13f};
-GMAT {spft.satName}.VZ = {spft.state_vector[5]:.13f};
+GMAT {spft.satName}.X = {spft.state_vector[1]:.13f};
+GMAT {spft.satName}.Y = {spft.state_vector[2]:.13f};
+GMAT {spft.satName}.Z = {spft.state_vector[3]:.13f};
+GMAT {spft.satName}.VX = {spft.state_vector[4]:.13f};
+GMAT {spft.satName}.VY = {spft.state_vector[5]:.13f};
+GMAT {spft.satName}.VZ = {spft.state_vector[6]:.13f};
 
 % Additional
 GMAT {spft.satName}.AtmosDensityScaleFactor = 1;
@@ -322,6 +328,48 @@ GMAT {spft.satName}.Cd = {spft.physical_prop["Cd"]};
 GMAT {spft.satName}.Cr = {spft.physical_prop["Cr"]};
 GMAT {spft.satName}.SRPArea = {spft.physical_prop["SRPArea"]};
         """)
+        elif spft.state_vector[0] == "k":
+            script_spacecrafts.append(f"""
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+                                
+Create Spacecraft {spft.satName};
+GMAT {spft.satName}.DateFormat = UTCGregorian;
+GMAT {spft.satName}.Epoch = '{spft.epoch}';
+GMAT {spft.satName}.CoordinateSystem = EarthMJ2000Eq;
+
+GMAT {spft.satName}.DisplayStateType = Keplerian;
+GMAT {spft.satName}.SMA= {spft.state_vector[1]:.13f};
+GMAT {spft.satName}.ECC = {spft.state_vector[2]:.13f};
+GMAT {spft.satName}.INC = {spft.state_vector[3]:.13f};
+GMAT {spft.satName}.RAAN = {spft.state_vector[4]:.13f};
+GMAT {spft.satName}.AOP = {spft.state_vector[5]:.13f};
+GMAT {spft.satName}.TA= {spft.state_vector[6]:.13f};
+
+% Additional
+GMAT {spft.satName}.AtmosDensityScaleFactor = 1;
+GMAT {spft.satName}.ExtendedMassPropertiesModel = 'None';
+GMAT {spft.satName}.NAIFId = -10000001;
+GMAT {spft.satName}.NAIFIdReferenceFrame = -9000001;
+GMAT {spft.satName}.OrbitColor = [{random_rgb[0]} {random_rgb[1]} {random_rgb[2]}];
+GMAT {spft.satName}.TargetColor = Teal;
+GMAT {spft.satName}.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
+GMAT {spft.satName}.CdSigma = 1e+70;
+GMAT {spft.satName}.CrSigma = 1e+70;
+GMAT {spft.satName}.Id = 'SatId';
+      
+%----------------------------------------
+%---------- Physical properties
+%----------------------------------------
+GMAT {spft.satName}.DryMass = {spft.physical_prop['DryMass']};
+GMAT {spft.satName}.DragArea = {spft.physical_prop['DragArea']};
+GMAT {spft.satName}.Cd = {spft.physical_prop["Cd"]};
+GMAT {spft.satName}.Cr = {spft.physical_prop["Cr"]};
+GMAT {spft.satName}.SRPArea = {spft.physical_prop["SRPArea"]};
+        """)
+            
+
     if not isinstance(forceModels, list):
         forceModels = [forceModels]
     for fm in forceModels:

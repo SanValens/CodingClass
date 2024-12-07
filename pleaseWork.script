@@ -1,5 +1,5 @@
 %General Mission Analysis Tool(GMAT) Script
-%Created: 29 Nov 2024 00:13:43.467
+%Created: 06 Dec 2024 22:23:13.317
 %This script was python generated using the Debrisk library
     
 %----------------------------------------
@@ -8,22 +8,23 @@
                                 
 Create Spacecraft ISS;
 GMAT ISS.DateFormat = UTCGregorian;
-GMAT ISS.Epoch = '29 Nov 2024 00:13:43.467';
+GMAT ISS.Epoch = '06 Dec 2024 22:23:13.317';
 GMAT ISS.CoordinateSystem = EarthMJ2000Eq;
-GMAT ISS.DisplayStateType = Cartesian;
-GMAT ISS.X = -3803.1116832706521;
-GMAT ISS.Y = 5637.4220774463010;
-GMAT ISS.Z = 0.6511037549654;
-GMAT ISS.VX = -3.9405986891267;
-GMAT ISS.VY = -2.6619155216022;
-GMAT ISS.VZ = 5.9998577327845;
+
+GMAT ISS.DisplayStateType = Keplerian;
+GMAT ISS.SMA= -3803.1116832706521;
+GMAT ISS.ECC = 5637.4220774463010;
+GMAT ISS.INC = 0.6511037549654;
+GMAT ISS.RAAN = -3.9405986891267;
+GMAT ISS.AOP = -2.6619155216022;
+GMAT ISS.TA= 5.9998577327845;
 
 % Additional
 GMAT ISS.AtmosDensityScaleFactor = 1;
 GMAT ISS.ExtendedMassPropertiesModel = 'None';
 GMAT ISS.NAIFId = -10000001;
 GMAT ISS.NAIFIdReferenceFrame = -9000001;
-GMAT ISS.OrbitColor = [105 106 204];
+GMAT ISS.OrbitColor = [100 241 143];
 GMAT ISS.TargetColor = Teal;
 GMAT ISS.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
 GMAT ISS.CdSigma = 1e+70;
@@ -45,8 +46,9 @@ GMAT ISS.SRPArea = 0.0;
                                 
 Create Spacecraft debris;
 GMAT debris.DateFormat = UTCGregorian;
-GMAT debris.Epoch = '29 Nov 2024 00:13:43.467';
+GMAT debris.Epoch = '06 Dec 2024 22:23:13.317';
 GMAT debris.CoordinateSystem = EarthMJ2000Eq;
+
 GMAT debris.DisplayStateType = Cartesian;
 GMAT debris.X = -4500.1116832706521;
 GMAT debris.Y = 6000.4220774463010;
@@ -60,7 +62,7 @@ GMAT debris.AtmosDensityScaleFactor = 1;
 GMAT debris.ExtendedMassPropertiesModel = 'None';
 GMAT debris.NAIFId = -10000001;
 GMAT debris.NAIFIdReferenceFrame = -9000001;
-GMAT debris.OrbitColor = [7 226 53];
+GMAT debris.OrbitColor = [17 254 37];
 GMAT debris.TargetColor = Teal;
 GMAT debris.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
 GMAT debris.CdSigma = 1e+70;
@@ -82,22 +84,23 @@ GMAT debris.SRPArea = 0.0;
                                 
 Create Spacecraft debris2;
 GMAT debris2.DateFormat = UTCGregorian;
-GMAT debris2.Epoch = '29 Nov 2024 00:13:43.467';
+GMAT debris2.Epoch = '06 Dec 2024 22:23:13.317';
 GMAT debris2.CoordinateSystem = EarthMJ2000Eq;
-GMAT debris2.DisplayStateType = Cartesian;
-GMAT debris2.X = -5000.1116832706521;
-GMAT debris2.Y = 6200.0000000000000;
-GMAT debris2.Z = 5.6511037549654;
-GMAT debris2.VX = -4.9405986891267;
-GMAT debris2.VY = -2.6619155216022;
-GMAT debris2.VZ = 5.9998577327845;
+
+GMAT debris2.DisplayStateType = Keplerian;
+GMAT debris2.SMA= -5000.1116832706521;
+GMAT debris2.ECC = 6200.0000000000000;
+GMAT debris2.INC = 5.6511037549654;
+GMAT debris2.RAAN = -4.9405986891267;
+GMAT debris2.AOP = -2.6619155216022;
+GMAT debris2.TA= 5.9998577327845;
 
 % Additional
 GMAT debris2.AtmosDensityScaleFactor = 1;
 GMAT debris2.ExtendedMassPropertiesModel = 'None';
 GMAT debris2.NAIFId = -10000001;
 GMAT debris2.NAIFIdReferenceFrame = -9000001;
-GMAT debris2.OrbitColor = [107 77 68];
+GMAT debris2.OrbitColor = [117 248 248];
 GMAT debris2.TargetColor = Teal;
 GMAT debris2.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
 GMAT debris2.CdSigma = 1e+70;
@@ -153,7 +156,7 @@ GMAT Rep1.UpperLeft = [ 0.02950819672131148 0.05714285714285714 ];
 GMAT Rep1.Size = [ 0.5975409836065574 0.7957142857142857 ];
 GMAT Rep1.RelativeZOrder = 138;
 GMAT Rep1.Maximized = false; 
-GMAT Rep1.Filename = 'C:\Users\Tiago\Documents\Universidad\Semilleros\Debrisk\coding_proyect\report1.txt'
+GMAT Rep1.Filename = 'C:\Users\maria\Desktop\Cuarto semestre\Programación\CodingProyect\report1.txt'
 GMAT Rep1.Add = {ISS.UTCGregorian, ISS.EarthMJ2000Eq.X, ISS.EarthMJ2000Eq.Y, ISS.EarthMJ2000Eq.Z, debris.UTCGregorian, debris.EarthMJ2000Eq.X, debris.EarthMJ2000Eq.Y, debris.EarthMJ2000Eq.Z, debris2.UTCGregorian, debris2.EarthMJ2000Eq.X, debris2.EarthMJ2000Eq.Y, debris2.EarthMJ2000Eq.Z}
 GMAT Rep1.WriteHeaders = true;
 GMAT Rep1.LeftJustify = On;
